@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using Core.Domain;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Core.Intrastructure
 {
@@ -7,7 +8,7 @@ namespace Core.Intrastructure
         where TEntity : BaseEntity<TKey>
         where TKey : struct
     {
-        private readonly IDictionary<TKey, TEntity> _entities;
+        protected readonly IDictionary<TKey, TEntity> _entities;
 
         public FakeEntityRepository(Faker<TEntity> faker)
         {
@@ -36,6 +37,14 @@ namespace Core.Intrastructure
             {
                 return Task.FromResult<TEntity>(null);
             }
+        }
+
+        public async Task PatchAsync(TKey id, JsonPatchDocument<TEntity> patchEntity)
+        {
+            TEntity entity = await GetAsync(id);
+
+            patchEntity.ApplyTo(entity);
+
         }
 
         public Task RemoveAsync(TKey id)

@@ -9,6 +9,6 @@ namespace CustomerService.Domain
 {
     public interface ICustomerRepository : IEntityRepository<int, Customer>
     {
-        Task<IEnumerable<Customer>> GetByAdress(string city, string country);
+        Task<IEnumerable<Customer>> Get(CustomerSearchCritieria searchCritieria);
     }
 }

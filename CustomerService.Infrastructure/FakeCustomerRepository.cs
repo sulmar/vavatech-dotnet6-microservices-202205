@@ -10,9 +10,22 @@ namespace CustomerService.Infrastructure
         {
         }
 
-        public Task<IEnumerable<Customer>> GetByAdress(string city, string country)
+        public Task<IEnumerable<Customer>> Get(CustomerSearchCritieria searchCritieria)
         {
-            throw new NotImplementedException();
+            var customers = _entities.Values.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchCritieria.FirstName))
+            {
+                customers = customers.Where(x => x.FirstName == searchCritieria.FirstName);
+            }
+
+            if (!string.IsNullOrEmpty(searchCritieria.Pesel))
+            {
+                customers = customers.Where(x => x.Pesel == searchCritieria.Pesel);
+            }
+
+            return Task.FromResult(customers.ToList().AsEnumerable());
+
         }
     }
 }

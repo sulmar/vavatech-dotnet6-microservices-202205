@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace Core.Domain
         Task<TEntity> GetAsync(TKey id);
         Task AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
+        Task PatchAsync(TKey id, JsonPatchDocument<TEntity> patchEntity);
         Task RemoveAsync(TKey id);
     }
 }
