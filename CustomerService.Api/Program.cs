@@ -1,6 +1,7 @@
 using Bogus;
 using CustomerService.Domain;
 using CustomerService.Infrastructure;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +12,13 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// MediatR.Extensions.Autofac.DependencyInjection
+builder.Services.AddMediatR(typeof(Program));
+
 builder.Services.AddSingleton<ICustomerRepository, FakeCustomerRepository>();
 builder.Services.AddSingleton<Faker<Customer>, CustomerFaker>();
+
+builder.Services.AddSingleton<IMessageSender, FakeConsoleMessageSender>();
 
 var app = builder.Build();
 

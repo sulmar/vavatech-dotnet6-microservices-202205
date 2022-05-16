@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
+using MediatR;
+using CustomerService.Api.Notifications;
 
 namespace CustomerService.Api.Controllers
 {
@@ -11,10 +13,16 @@ namespace CustomerService.Api.Controllers
     {
         private readonly ICustomerRepository customerRepository;
 
-        public CustomersController(ICustomerRepository customerRepository)
+        private readonly IMediator mediator;
+
+        public CustomersController(ICustomerRepository customerRepository, IMediator mediator)
         {
             this.customerRepository = customerRepository;
+            this.mediator = mediator;
+
         }
+
+      
 
         [HttpGet("ping")]
         public string Ping()
@@ -89,7 +97,7 @@ namespace CustomerService.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Customer>> Post(Customer customer)
         {
-            await customerRepository.AddAsync(customer);
+            await mediator.Publish(new AddCustomerNotification(customer));
 
             return CreatedAtRoute("GetCustomerById", new { id = customer.Id }, customer);
         }
