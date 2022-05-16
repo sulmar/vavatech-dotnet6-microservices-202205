@@ -27,5 +27,12 @@ namespace CustomerService.Infrastructure
             return Task.FromResult(customers.ToList().AsEnumerable());
 
         }
+
+        public Task<Customer> GetAsync(string pesel)
+        {
+            var customer = _entities.Values.SingleOrDefault(e => e.Pesel == pesel);
+
+            return Task.FromResult(customer);
+        }
     }
 }

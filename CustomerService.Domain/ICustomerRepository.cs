@@ -10,5 +10,6 @@ namespace CustomerService.Domain
     public interface ICustomerRepository : IEntityRepository<int, Customer>
     {
         Task<IEnumerable<Customer>> Get(CustomerSearchCritieria searchCritieria);
+        Task<Customer> GetAsync(string pesel);
     }
 }

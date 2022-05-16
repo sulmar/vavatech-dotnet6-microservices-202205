@@ -30,9 +30,28 @@ namespace CustomerService.Api.Controllers
         //    return customers;
         //}
 
+        [HttpGet("{pesel:length(11)}")]
+        public async Task<ActionResult<Customer>> Get(string pesel)
+        {
+            var customer = await customerRepository.GetAsync(pesel);
+
+            //if (customer==null)
+            //{
+            //    return new NotFoundResult();
+            //}
+
+            // return new OkObjectResult(customer);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(customer);
+        }
 
         // GET api/customers/{id}
-        [HttpGet("{id}", Name = "GetCustomerById")]
+        [HttpGet("{id:int}", Name = "GetCustomerById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
@@ -72,7 +91,7 @@ namespace CustomerService.Api.Controllers
         {
             await customerRepository.AddAsync(customer);
 
-            return CreatedAtRoute("GetCustomerById",  new { id = customer.Id }, customer);
+            return CreatedAtRoute("GetCustomerById", new { id = customer.Id }, customer);
         }
 
         // PUT  localhost:5000/api/customers/{id}
@@ -96,18 +115,18 @@ namespace CustomerService.Api.Controllers
         // Content-Type: application/json-patch+json
         // https://www.npmjs.com/package/jsonpatch
 
-        [HttpPatch("{id}")]        
+        [HttpPatch("{id}")]
         public async Task<ActionResult> Patch(int id, [FromBody] JsonPatchDocument<Customer> patchCustomer)
         {
             await customerRepository.PatchAsync(id, patchCustomer);
 
             return NoContent();
-
         }
 
         // JSON Merge Patch  
         //public async Task<ActionResult> Patch(int id)
         //{
         //}
+    }
 
 }

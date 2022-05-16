@@ -29,4 +29,21 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+//app.UseEndpoints(endpoints =>
+//{
+//    endpoints.MapGet("api/customers/{id}", async context =>
+//    {
+//        int id = (int)context.Request.RouteValues["id"];
+
+//        ICustomerRepository customerRepository = context.RequestServices.GetRequiredService<ICustomerRepository>();
+
+//        Customer customer = await customerRepository.Get(id);
+
+
+
+//    });
+//});
+
+//)
+
 app.Run();
