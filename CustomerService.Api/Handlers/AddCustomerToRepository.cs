@@ -4,12 +4,11 @@ using MediatR;
 
 namespace CustomerService.Api.Handlers
 {
-    public class AddCustomerToDb : INotificationHandler<AddCustomerNotification>
+    public class AddCustomerToRepository : INotificationHandler<AddCustomerNotification>
     {
-
         private readonly ICustomerRepository customerRepository;
 
-        public AddCustomerToDb(ICustomerRepository customerRepository)
+        public AddCustomerToRepository(ICustomerRepository customerRepository)
         {
             this.customerRepository = customerRepository;
         }

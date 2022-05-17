@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using MediatR;
 using CustomerService.Api.Notifications;
+using CustomerService.Api.Queries;
 
 namespace CustomerService.Api.Controllers
 {
@@ -19,10 +20,7 @@ namespace CustomerService.Api.Controllers
         {
             this.customerRepository = customerRepository;
             this.mediator = mediator;
-
-        }
-
-      
+        }      
 
         [HttpGet("ping")]
         public string Ping()
@@ -30,18 +28,18 @@ namespace CustomerService.Api.Controllers
             return "Pong";
         }
 
-        //[HttpGet]
-        //public async Task<IEnumerable<Customer>> Get()
-        //{
-        //    var customers = await customerRepository.GetAsync();
+        [HttpGet]
+        public async Task<IEnumerable<Customer>> Get()
+        {
+            var customers = await mediator.Send(new GetCustomersQuery());
 
-        //    return customers;
-        //}
+            return customers;
+        }
 
         [HttpGet("{pesel:length(11)}")]
         public async Task<ActionResult<Customer>> Get(string pesel)
         {
-            var customer = await customerRepository.GetAsync(pesel);
+            var customer = await mediator.Send(new GetCustomerByPeselQuery(pesel));
 
             //if (customer==null)
             //{
@@ -65,7 +63,7 @@ namespace CustomerService.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult<Customer>> Get(int id)
         {
-            var customer = await customerRepository.GetAsync(id);
+            var customer = await mediator.Send(new GetCustomerByIdQuery(id));
 
             //if (customer==null)
             //{
@@ -83,13 +81,13 @@ namespace CustomerService.Api.Controllers
         }
 
         // GET localhost:5000/api/customers?pesel=Warsaw&email=Poland
-        [HttpGet]
-        public async Task<ActionResult<Customer>> Get([FromQuery] CustomerSearchCritieria searchCritieria)
-        {
-            var customers = await customerRepository.Get(searchCritieria);
+        //[HttpGet]
+        //public async Task<ActionResult<Customer>> Get([FromQuery] CustomerSearchCritieria searchCritieria)
+        //{
+        //    var customers = await customerRepository.Get(searchCritieria);
 
-            return Ok(customers);
-        }
+        //    return Ok(customers);
+        //}
 
         // POST localhost:5000/api/customers
         [ProducesResponseType(StatusCodes.Status201Created)]
