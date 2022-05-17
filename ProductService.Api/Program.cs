@@ -1,4 +1,9 @@
 using Bogus;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using ProductService.Api.HealthChecks;
 using ProductService.Domain;
 using ProductService.Infrastructure;
 
@@ -11,6 +16,26 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IProductRepository, FakeProductRepository>();
 builder.Services.AddSingleton<Faker<Product>, ProductFaker>();
+
+builder.Services.AddHttpClient();
+
+builder.Services.AddHealthChecks()
+    .AddCheck<NbpApiHealthCheck>("NbpApi")
+    .AddCheck("Sample", () => HealthCheckResult.Healthy("Lorem ipsum"));
+    ;
+
+// dotnet add package AspNetCore.HealthChecks.UI
+builder.Services.AddHealthChecksUI()
+    .AddInMemoryStorage(); // dotnet add package AspNetCore.HealthChecks.UI.InMemory.Storage
+
+
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<GzipCompressionProvider>();
+    options.Providers.Add<BrotliCompressionProvider>();
+});
+
 
 var app = builder.Build();
 
@@ -69,5 +94,14 @@ app.MapPost("api/products", async (IProductRepository repository, Product produc
 
     return Results.CreatedAtRoute("GetProductById", new { id = product.Id }, product);
 });
+
+app.MapHealthChecks("/health", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+
+
+app.MapHealthChecksUI(); // /healthchecks-ui
 
 app.Run();
