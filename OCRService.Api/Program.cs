@@ -33,8 +33,27 @@ var app = builder.Build();
 // app.UseMiddleware<LoggerMiddleware>();
 // app.UseMiddleware<AuthorizationMiddleware>();
 
+app.UseExceptionHandler();
+
+app.Use(async (context, next) =>
+{
+    try
+    {
+        await next();
+    }
+    catch (Exception e)
+    {
+        context.Response.StatusCode = 500;
+        await context.Response.WriteAsync(e.Message);
+
+    }
+});
+
+
 app.UseLogger();
 app.UseMyAuthorization();
+
+
 
 app.Run(async context =>
 {
