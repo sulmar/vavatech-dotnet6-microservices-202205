@@ -16,4 +16,6 @@ app.MapCodeFirstGrpcReflectionService();
 
 app.MapGet("/", () => "Hello World!");
 
+// https://github.com/grpc/grpc-web
+
 app.Run();
