@@ -39,7 +39,6 @@ app.MapPost("api/customers/{id}/invoice", async (int id,
     return Results.Accepted();
 });
 
-app.UseHangfireServer();
 app.MapHangfireDashboard();
 
 app.Run();
