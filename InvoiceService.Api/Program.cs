@@ -10,7 +10,7 @@ builder.Services.AddSingleton<IInvoiceService, PdfInvoiceService>();
 
 // dotnet add package Hangfire.AspNetCore
 // dotnet add package Hangfire.InMemory
-// builder.Services.AddHangfire(options => options.UseInMemoryStorage());
+builder.Services.AddHangfire(options => options.UseInMemoryStorage());
 
 string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HangfireDemo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 // dotnet add package Hangfire.SqlServer
@@ -39,6 +39,7 @@ app.MapPost("api/customers/{id}/invoice", async (int id,
     return Results.Accepted();
 });
 
+app.UseHangfireServer();
 app.MapHangfireDashboard();
 
 app.Run();
