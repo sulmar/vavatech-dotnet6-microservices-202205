@@ -7,7 +7,7 @@ Console.WriteLine("Hello, gRPC Client!");
 
 const string url = "https://localhost:5071";
 
-var channel = GrpcChannel.ForAddress(url);
+using var channel = GrpcChannel.ForAddress(url);
 
 var client = new WarehouseService.Api.WarehouseService.WarehouseServiceClient(channel);
 

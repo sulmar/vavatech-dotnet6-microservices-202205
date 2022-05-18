@@ -11,7 +11,6 @@ namespace DeliveryService.Contracts
     {
         [OperationContract]
         Task<DeliveryResponse> ConfirmDeliveryAsync(DeliveryRequest request, CallContext context = default);
-
     }
 
     [DataContract]

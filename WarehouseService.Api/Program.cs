@@ -40,4 +40,7 @@ app.UseDirectoryBrowser(new DirectoryBrowserOptions
     RequestPath = "/proto",
 });
 
+// Grpc.AspNetCore.HealthChecks
+app.MapGrpcHealthChecksService();
+
 app.Run();

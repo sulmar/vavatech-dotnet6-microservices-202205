@@ -23,47 +23,49 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Intrastructure", "Core
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductService", "ProductService", "{4FFFC8FD-0F1C-4144-9997-076BE03BEC4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService.Api", "ProductService.Api\ProductService.Api.csproj", "{8AE36BC9-180D-4D1F-AB54-F5F3C6924DDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService.Api", "ProductService.Api\ProductService.Api.csproj", "{8AE36BC9-180D-4D1F-AB54-F5F3C6924DDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService.Domain", "ProductService.Domain\ProductService.Domain.csproj", "{CD1551C8-542E-44E6-A79D-3FA290A81BE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService.Domain", "ProductService.Domain\ProductService.Domain.csproj", "{CD1551C8-542E-44E6-A79D-3FA290A81BE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService.Infrastructure", "ProductService.Infrastructure\ProductService.Infrastructure.csproj", "{65675CCA-9C18-4001-801C-0780C41E51AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService.Infrastructure", "ProductService.Infrastructure\ProductService.Infrastructure.csproj", "{65675CCA-9C18-4001-801C-0780C41E51AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PaymentService", "PaymentService", "{9B563666-F2E8-4A87-8A2C-D784AFBF5298}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Domain", "PaymentService.Domain\PaymentService.Domain.csproj", "{54DB2159-7A2E-4653-B24D-EFABE2800524}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService.Domain", "PaymentService.Domain\PaymentService.Domain.csproj", "{54DB2159-7A2E-4653-B24D-EFABE2800524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Infrastructure", "PaymentService.Infrastructure\PaymentService.Infrastructure.csproj", "{C7627715-5471-487B-B196-B0559D4F2E54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService.Infrastructure", "PaymentService.Infrastructure\PaymentService.Infrastructure.csproj", "{C7627715-5471-487B-B196-B0559D4F2E54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService.Api", "PaymentService.Api\PaymentService.Api.csproj", "{7ED9FF41-1C6A-46F3-BF00-793C31C3EC7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService.Api", "PaymentService.Api\PaymentService.Api.csproj", "{7ED9FF41-1C6A-46F3-BF00-793C31C3EC7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{89AF3429-E594-4E09-9D04-0D9DC94F978F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{89AF3429-E594-4E09-9D04-0D9DC94F978F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OCRService", "OCRService", "{267BFE41-18E2-4CCB-841F-C3DDB213F752}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCRService.Api", "OCRService.Api\OCRService.Api.csproj", "{7A90AE0F-C2A0-4298-9F1C-6BF6C0FD5094}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OCRService.Api", "OCRService.Api\OCRService.Api.csproj", "{7A90AE0F-C2A0-4298-9F1C-6BF6C0FD5094}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TrackingService", "TrackingService", "{DB1975CD-5E68-497B-B398-7E13F58611B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingService.Domain", "TrackingService.Domain\TrackingService.Domain.csproj", "{F39363C0-1722-4639-8815-94CA1C838E0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackingService.Domain", "TrackingService.Domain\TrackingService.Domain.csproj", "{F39363C0-1722-4639-8815-94CA1C838E0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingService.Api", "TrackingService.Api\TrackingService.Api.csproj", "{E6743D17-BA9A-40E0-AA51-474DBAF3C3C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackingService.Api", "TrackingService.Api\TrackingService.Api.csproj", "{E6743D17-BA9A-40E0-AA51-474DBAF3C3C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRConsoleSender", "SignalRConsoleSender\SignalRConsoleSender.csproj", "{27C0B433-A1AF-4315-8411-FE62B7FFA3E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRConsoleSender", "SignalRConsoleSender\SignalRConsoleSender.csproj", "{27C0B433-A1AF-4315-8411-FE62B7FFA3E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRConsoleReceiver", "SignalRConsoleReceiver\SignalRConsoleReceiver.csproj", "{33B62E3F-AF02-418F-8D4B-C47E89C50A02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRConsoleReceiver", "SignalRConsoleReceiver\SignalRConsoleReceiver.csproj", "{33B62E3F-AF02-418F-8D4B-C47E89C50A02}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WarehouseService", "WarehouseService", "{048F2D6B-6097-4067-BF6D-FF89D7A97ADD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseService.Api", "WarehouseService.Api\WarehouseService.Api.csproj", "{BAEF3C55-1B28-4547-974E-07EA32CDC1BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseService.Api", "WarehouseService.Api\WarehouseService.Api.csproj", "{BAEF3C55-1B28-4547-974E-07EA32CDC1BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPCConsoleClient", "gRPCConsoleClient\gRPCConsoleClient.csproj", "{40035EB6-F574-46F0-90DC-230BBBB6F948}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRPCConsoleClient", "gRPCConsoleClient\gRPCConsoleClient.csproj", "{40035EB6-F574-46F0-90DC-230BBBB6F948}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeliveryService", "DeliveryService", "{4696F7E9-827A-4704-9514-C7DB45B6EB24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.Api", "DeliveryService.Api\DeliveryService.Api.csproj", "{D54BD706-3CE8-4F98-9390-FC5C49E240C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryService.Api", "DeliveryService.Api\DeliveryService.Api.csproj", "{D54BD706-3CE8-4F98-9390-FC5C49E240C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryService.Contracts", "DeliveryService.Contracts\DeliveryService.Contracts.csproj", "{8A89EB3D-749E-413A-A1A4-966704D1B0B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryService.Contracts", "DeliveryService.Contracts\DeliveryService.Contracts.csproj", "{8A89EB3D-749E-413A-A1A4-966704D1B0B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPCCodeFirstConsoleClient", "gRPCCodeFirstConsoleClient\gRPCCodeFirstConsoleClient.csproj", "{8164B0DE-AA94-4563-B3EA-F72FC169D7BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -155,6 +157,10 @@ Global
 		{8A89EB3D-749E-413A-A1A4-966704D1B0B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A89EB3D-749E-413A-A1A4-966704D1B0B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A89EB3D-749E-413A-A1A4-966704D1B0B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8164B0DE-AA94-4563-B3EA-F72FC169D7BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8164B0DE-AA94-4563-B3EA-F72FC169D7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8164B0DE-AA94-4563-B3EA-F72FC169D7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8164B0DE-AA94-4563-B3EA-F72FC169D7BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -188,6 +194,7 @@ Global
 		{4696F7E9-827A-4704-9514-C7DB45B6EB24} = {9B721336-33B4-41A4-8C6D-444AC9AC85AB}
 		{D54BD706-3CE8-4F98-9390-FC5C49E240C6} = {4696F7E9-827A-4704-9514-C7DB45B6EB24}
 		{8A89EB3D-749E-413A-A1A4-966704D1B0B8} = {4696F7E9-827A-4704-9514-C7DB45B6EB24}
+		{8164B0DE-AA94-4563-B3EA-F72FC169D7BA} = {97A325CD-97FB-4596-859B-A0E8BA1973BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70D87B49-DF67-4324-8A4A-E8E101724080}
