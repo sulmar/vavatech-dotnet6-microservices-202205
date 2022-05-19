@@ -29,6 +29,7 @@ namespace CustomerService.Api.Controllers
             return "Pong";
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customer>>> Get()
         {

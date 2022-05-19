@@ -2,6 +2,9 @@ using Bogus;
 using CustomerService.Domain;
 using CustomerService.Infrastructure;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +25,29 @@ builder.Services.AddSingleton<IMessageSender, FakeConsoleMessageSender>();
 
 builder.Services.AddHealthChecks();
 
+var secretKey = "your-256-bit-secret";
+var key = Encoding.UTF8.GetBytes(secretKey);
+
+// dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = true,
+        ValidIssuer = "Vavatech",
+        ValidateAudience = true,
+        ValidAudience = "Vavatech",
+    };
+})
+    
+    ;
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,6 +59,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
