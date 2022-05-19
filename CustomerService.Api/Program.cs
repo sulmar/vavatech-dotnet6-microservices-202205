@@ -59,6 +59,14 @@ builder.Services.AddAuthorization(options =>
             policy.RequireClaim(ClaimTypes.DateOfBirth);
             policy.RequireAge(18);
         });
+
+    options.AddPolicy("AccessToFolder",
+        policy =>
+        {
+            policy.RequireAuthenticatedUser();
+            policy.RequireClaim("Permission");
+            policy.RequirePermission("read");
+        });
 });
 
 builder.Services.AddScoped<IAuthorizationHandler, MinimumAgeHandler>();
