@@ -1,5 +1,8 @@
 using Hangfire;
+using InvoiceService.Api.AuthenticationHandlers;
+using InvoiceService.Domain;
 using InvoiceService.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +21,14 @@ builder.Services.AddHangfire(options => options.UseSqlServerStorage(connectionSt
 
 builder.Services.AddHangfireServer();
 
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("TheSameAuthor", policy => policy.Requirements.Add(new TheSameAuthorRequirement()));
+});
+
+builder.Services.AddScoped<IAuthorizationHandler, InvoiceAuthorizationHandler>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -28,11 +39,18 @@ if (app.Environment.IsDevelopment())
 
 app.MapPost("api/customers/{id}/invoice", async (int id, 
     IInvoiceService invoiceService,
-    IBackgroundJobClient jobClient) =>
+    IBackgroundJobClient jobClient,
+    IAuthorizationService authorizationService,
+    HttpContext context ) =>
 {
+
+    Invoice invoice = new Invoice { Customer = new Customer { LastName = "Smith" } };
+
+    var result = await authorizationService.AuthorizeAsync(context.User, invoice, "TheSameAuthor");
+
     // Uwaga: wersja statyczna, nietestowalna!
     // BackgroundJob.Enqueue(() => invoiceService.CreateInvoice(id));
-    
+
     // wersja instancyjna, testowalna
     string jobId = jobClient.Enqueue(() => invoiceService.CreateInvoice(id));
 
