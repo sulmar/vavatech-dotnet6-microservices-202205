@@ -19,7 +19,12 @@ namespace AuthService.Infrastructure
             {
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.GivenName, user.LastName)
+                new Claim(JwtRegisteredClaimNames.GivenName, user.LastName),
+
+                new Claim(ClaimTypes.Role, "Trainer"),
+                new Claim(ClaimTypes.Role, "Developer"),
+
+                new Claim(ClaimTypes.DateOfBirth, user.Birthday.ToShortDateString()),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));

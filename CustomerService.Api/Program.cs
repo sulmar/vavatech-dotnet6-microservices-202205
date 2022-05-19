@@ -1,9 +1,12 @@
 using Bogus;
+using CustomerService.Api.AuthenticationHandlers;
 using CustomerService.Domain;
 using CustomerService.Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,9 +47,21 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidAudience = "Vavatech",
     };
-})
-    
-    ;
+});
+
+
+builder.Services.AddAuthorization(options =>
+{    
+    options.AddPolicy("Adult",
+        policy =>
+        {
+            policy.RequireAuthenticatedUser();
+            policy.RequireClaim(ClaimTypes.DateOfBirth);
+            policy.RequireAge(18);
+        });
+});
+
+builder.Services.AddScoped<IAuthorizationHandler, MinimumAgeHandler>();
 
 var app = builder.Build();
 
@@ -62,7 +77,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllers().RequireAuthorization();
 
 app.MapHealthChecks("/health");
 

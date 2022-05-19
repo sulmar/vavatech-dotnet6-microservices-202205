@@ -20,6 +20,9 @@ namespace AuthService.Infrastructure
             RuleFor(p => p.HashedPassword, (f,user) => passwordHasher.HashPassword(user, "12345"));
             RuleFor(p => p.Email, f => f.Person.Email);
             RuleFor(p => p.Phone, f => f.Person.Phone);
+            RuleFor(p => p.Gender, f => (Gender) f.Person.Gender);
+            RuleFor(p => p.Birthday, f => f.Person.DateOfBirth);
+
         }
     }
 }

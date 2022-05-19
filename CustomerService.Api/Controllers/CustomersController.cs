@@ -6,9 +6,11 @@ using MediatR;
 using CustomerService.Api.Notifications;
 using CustomerService.Api.Queries;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CustomerService.Api.Controllers
 {
+   // [Authorize]
     [ApiController]
     [Route("api/customers")]
     public class CustomersController : ControllerBase
@@ -21,21 +23,29 @@ namespace CustomerService.Api.Controllers
         {
             this.customerRepository = customerRepository;
             this.mediator = mediator;
-        }      
+        }
 
+        [AllowAnonymous]
         [HttpGet("ping")]
         public string Ping()
         {
             return "Pong";
         }
 
-        [Authorize]
+        // [Authorize(Roles = "Boss,Trainer")]
+
+        [Authorize(Policy = "Adult")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customer>>> Get()
         {
             if (!this.User.Identity.IsAuthenticated)
             {
                 return Unauthorized();
+            }
+
+            if (!this.User.IsInRole("Trainer"))
+            {
+                return Forbid();
             }
 
             var customers = await mediator.Send(new GetCustomersQuery());
@@ -97,12 +107,15 @@ namespace CustomerService.Api.Controllers
         //}
 
         // POST localhost:5000/api/customers
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesDefaultResponseType]
         [HttpPost]
         public async Task<ActionResult<Customer>> Post(Customer customer)
         {
-            var phoneClaim = this.User.Claims.FirstOrDefault(c => c.Type == "Phone");
+            // var emailClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
+
+            var email = User.FindFirstValue(ClaimTypes.Email);
 
             await mediator.Publish(new AddCustomerNotification(customer));
 
