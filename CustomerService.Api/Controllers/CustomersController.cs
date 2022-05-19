@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.JsonPatch;
 using MediatR;
 using CustomerService.Api.Notifications;
 using CustomerService.Api.Queries;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CustomerService.Api.Controllers
 {
@@ -29,11 +30,16 @@ namespace CustomerService.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Customer>> Get()
+        public async Task<ActionResult<IEnumerable<Customer>>> Get()
         {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                return Unauthorized();
+            }
+
             var customers = await mediator.Send(new GetCustomersQuery());
 
-            return customers;
+            return Ok(customers);
         }
 
         [HttpGet("{pesel:length(11)}")]
@@ -95,6 +101,8 @@ namespace CustomerService.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Customer>> Post(Customer customer)
         {
+            var phoneClaim = this.User.Claims.FirstOrDefault(c => c.Type == "Phone");
+
             await mediator.Publish(new AddCustomerNotification(customer));
 
             return CreatedAtRoute("GetCustomerById", new { id = customer.Id }, customer);

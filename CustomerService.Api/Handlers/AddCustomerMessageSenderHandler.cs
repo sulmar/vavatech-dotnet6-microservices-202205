@@ -17,6 +17,7 @@ namespace CustomerService.Api.Handlers
         {
             var customer = notification.Customer;
 
+
             await messageSender.Send(customer.Email, "Welcome!");
         }
     }
