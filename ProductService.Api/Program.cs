@@ -19,9 +19,27 @@ builder.Services.AddSingleton<Faker<Product>, ProductFaker>();
 
 builder.Services.AddHttpClient();
 
+string instance = builder.Configuration["instance"];
+
 builder.Services.AddHealthChecks()
     .AddCheck<NbpApiHealthCheck>("NbpApi")
-    .AddCheck("Sample", () => HealthCheckResult.Healthy("Lorem ipsum"));
+    .AddCheck("Sample", () =>
+    {
+        if (instance=="B")
+        {
+            if (DateTime.Now.Minute % 2 == 0)
+            {
+                return HealthCheckResult.Unhealthy();
+            }
+            else
+            {
+                return HealthCheckResult.Healthy();
+            }
+        }
+
+        return HealthCheckResult.Healthy("Lorem ipsum");
+
+    });
     ;
 
 // dotnet add package AspNetCore.HealthChecks.UI
@@ -47,6 +65,19 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+
+
+app.Use(async (context, next) =>
+{
+    context.Response.OnStarting(() =>
+    {
+        context.Response.Headers.Add("X-Instance", instance);
+        return Task.CompletedTask;
+    });
+
+    await next();
+});
 
 app.MapGet("api/products/ping", () => "Pong");
 

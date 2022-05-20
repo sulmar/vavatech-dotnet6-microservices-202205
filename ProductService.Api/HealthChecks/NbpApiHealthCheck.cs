@@ -2,9 +2,11 @@
 
 namespace ProductService.Api.HealthChecks
 {
+    
+
     public class NbpApiHealthCheck : IHealthCheck
     {
-        private const string url = "https://api.nbp2.pl/api/exchangerates/tables/a?format=json";
+        private const string url = "https://api.nbp.pl/api/exchangerates/tables/a?format=json";
 
         private readonly IHttpClientFactory httpClientFactory;
 

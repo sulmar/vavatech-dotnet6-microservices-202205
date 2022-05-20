@@ -12,7 +12,7 @@ namespace CustomerService.Api.Controllers
 {
    // [Authorize]
     [ApiController]
-    [Route("api/customers")]
+    [Route("customers")]
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerRepository customerRepository;
@@ -47,6 +47,8 @@ namespace CustomerService.Api.Controllers
             //{
             //    return Forbid();
             //}
+
+            var value = this.HttpContext.Request.Headers["ClientType"];
 
             var customers = await mediator.Send(new GetCustomersQuery());
 
