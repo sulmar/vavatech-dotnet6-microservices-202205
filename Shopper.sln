@@ -91,6 +91,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GatewayService", "GatewaySe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayService.Api", "GatewayService.Api\GatewayService.Api.csproj", "{165B8434-5D32-41FA-832E-8443301EB0FB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{87A31B91-DE60-4EA0-BCB4-6AC3363A8FFE}"
+	ProjectSection(SolutionItems) = preProject
+		redis-history.txt = redis-history.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShoppingCartService", "ShoppingCartService", "{4FF1E86C-A8F5-4B01-A622-0F11A93A6FEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -263,6 +270,7 @@ Global
 		{8E1506EE-3C2A-4A55-A2CB-8C27026EFDD4} = {7828462D-7DAE-4AF9-B598-52DE50BDAD9F}
 		{8BE5EBD7-D5D5-4855-B9FB-8F29EF37F886} = {9B721336-33B4-41A4-8C6D-444AC9AC85AB}
 		{165B8434-5D32-41FA-832E-8443301EB0FB} = {8BE5EBD7-D5D5-4855-B9FB-8F29EF37F886}
+		{4FF1E86C-A8F5-4B01-A622-0F11A93A6FEC} = {9B721336-33B4-41A4-8C6D-444AC9AC85AB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70D87B49-DF67-4324-8A4A-E8E101724080}
