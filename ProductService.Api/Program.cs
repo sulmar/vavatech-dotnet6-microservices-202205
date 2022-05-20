@@ -50,8 +50,8 @@ app.UseHttpsRedirection();
 
 app.MapGet("api/products/ping", () => "Pong");
 
-app.MapGet("api/products", async (IProductRepository repository) => Results.Ok(await repository.GetAsync()))
-    .RequireAuthorization();
+app.MapGet("api/products", async (IProductRepository repository) => Results.Ok(await repository.GetAsync()));
+    //.RequireAuthorization();
 
 /*
 app.MapGet("api/products/{id}", async (IProductRepository repository, int id) =>

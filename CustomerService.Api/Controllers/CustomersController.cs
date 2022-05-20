@@ -34,19 +34,19 @@ namespace CustomerService.Api.Controllers
 
         // [Authorize(Roles = "Boss,Trainer")]
 
-        [Authorize(Policy = "Adult")]
+       // [Authorize(Policy = "Adult")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customer>>> Get()
         {
-            if (!this.User.Identity.IsAuthenticated)
-            {
-                return Unauthorized();
-            }
+            //if (!this.User.Identity.IsAuthenticated)
+            //{
+            //    return Unauthorized();
+            //}
 
-            if (!this.User.IsInRole("Trainer"))
-            {
-                return Forbid();
-            }
+            //if (!this.User.IsInRole("Trainer"))
+            //{
+            //    return Forbid();
+            //}
 
             var customers = await mediator.Send(new GetCustomersQuery());
 

@@ -77,15 +77,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoiceService.Api", "Invoi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthService", "AuthService", "{67FBCDAB-EB9E-4F0D-AED6-212AFCCF9B93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Api", "AuthService.Api\AuthService.Api.csproj", "{1F65E7CD-C5CF-4CD5-9A9C-32C5B8B1102D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService.Api", "AuthService.Api\AuthService.Api.csproj", "{1F65E7CD-C5CF-4CD5-9A9C-32C5B8B1102D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Domain", "AuthService.Domain\AuthService.Domain.csproj", "{22764AC2-0A24-4B34-82EE-E604A83C4557}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService.Domain", "AuthService.Domain\AuthService.Domain.csproj", "{22764AC2-0A24-4B34-82EE-E604A83C4557}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService.Infrastructure", "AuthService.Infrastructure\AuthService.Infrastructure.csproj", "{C9C83972-2E3F-4509-AD58-884E2BCAA1A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService.Infrastructure", "AuthService.Infrastructure\AuthService.Infrastructure.csproj", "{C9C83972-2E3F-4509-AD58-884E2BCAA1A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DriverService", "DriverService", "{7828462D-7DAE-4AF9-B598-52DE50BDAD9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriverService.Api", "DriverService.Api\DriverService.Api.csproj", "{8E1506EE-3C2A-4A55-A2CB-8C27026EFDD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DriverService.Api", "DriverService.Api\DriverService.Api.csproj", "{8E1506EE-3C2A-4A55-A2CB-8C27026EFDD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GatewayService", "GatewayService", "{8BE5EBD7-D5D5-4855-B9FB-8F29EF37F886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayService.Api", "GatewayService.Api\GatewayService.Api.csproj", "{165B8434-5D32-41FA-832E-8443301EB0FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -209,6 +213,10 @@ Global
 		{8E1506EE-3C2A-4A55-A2CB-8C27026EFDD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E1506EE-3C2A-4A55-A2CB-8C27026EFDD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E1506EE-3C2A-4A55-A2CB-8C27026EFDD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{165B8434-5D32-41FA-832E-8443301EB0FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{165B8434-5D32-41FA-832E-8443301EB0FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{165B8434-5D32-41FA-832E-8443301EB0FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{165B8434-5D32-41FA-832E-8443301EB0FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -253,6 +261,8 @@ Global
 		{C9C83972-2E3F-4509-AD58-884E2BCAA1A6} = {67FBCDAB-EB9E-4F0D-AED6-212AFCCF9B93}
 		{7828462D-7DAE-4AF9-B598-52DE50BDAD9F} = {9B721336-33B4-41A4-8C6D-444AC9AC85AB}
 		{8E1506EE-3C2A-4A55-A2CB-8C27026EFDD4} = {7828462D-7DAE-4AF9-B598-52DE50BDAD9F}
+		{8BE5EBD7-D5D5-4855-B9FB-8F29EF37F886} = {9B721336-33B4-41A4-8C6D-444AC9AC85AB}
+		{165B8434-5D32-41FA-832E-8443301EB0FB} = {8BE5EBD7-D5D5-4855-B9FB-8F29EF37F886}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70D87B49-DF67-4324-8A4A-E8E101724080}
