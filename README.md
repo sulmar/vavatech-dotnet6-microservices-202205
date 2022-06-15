@@ -2,7 +2,7 @@
 
 ## Projekty
 
-| Projekt  	|   	|
+| Projekt  	| Rodzaj projektu  	|
 |---	|---	|
 | CustomerService.Api  	| Web Api MVC  	|
 | PaymentService.Api  	| Ardalis.ApiEndpoints  	|
@@ -11,6 +11,7 @@
 | TrackingService.Api 	| Signal R  	|
 | DeliveryService.Api 	| gRPC Server  	|
 | ShoppingCartService.Api | REDIS |
+| AuthService.Api | JWT Token |
 
 ## REDIS
 
